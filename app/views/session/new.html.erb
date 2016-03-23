@@ -1,0 +1,14 @@
+<h1>Login Please</h1>
+
+<form action="/session" method="post">
+  <%= token_tag nil %>
+  <p>
+    <label>Email:</label>
+    <input type="text" name="email">
+  </p>
+  <p>
+    <label>Password:</label>
+    <input type="password" name="password">
+  </p>
+  <input type="submit" value="Login">
+</form>

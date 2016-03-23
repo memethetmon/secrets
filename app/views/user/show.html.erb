@@ -1,0 +1,17 @@
+<h1>Welcome <%= @user.name %></h1>
+<h3>New Secret</h3>
+<form action= '/secrets' method='post'>
+	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+	<input type='hidden' name='secret[user_id]' value="<%= @user.id %>">
+	<input type="textarea" name="secret[content]">
+	<button>Create Secret</button>
+</form>
+<h2>Secrets</h2>
+<% @secrets.each do |s| %>
+	<p><%= s.content %></p>
+	<p><%= s.likes.count %> likes</p>
+	<%= button_to "Delete", {:controller => :secrets,
+      :action => 'destroy', :id => s.id }, :method => :delete %>
+<% end %>
+
+<a href="/user/<%= @user.id %>/edit">Edit Profile</a>
